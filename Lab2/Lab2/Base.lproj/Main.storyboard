@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad11_0rounded" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,17 +15,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lab2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM:SS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YQ-iB-m7Z">
-                                <rect key="frame" x="160" y="99" width="55" height="21"/>
+                                <rect key="frame" x="281" y="333" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6MH-UM-8jV">
-                                <rect key="frame" x="162.5" y="318.5" width="50" height="30"/>
+                                <rect key="frame" x="283.5" y="582" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="DkG-Cf-yXq"/>
                                 </constraints>
@@ -33,55 +33,66 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a number from 1 - 60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-fm-Hxg">
-                                <rect key="frame" x="84" y="183" width="207" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a number from 1 - 60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uh8-fm-Hxg">
+                                <rect key="frame" x="50" y="417" width="517.5" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uh8-fm-Hxg" secondAttribute="height" multiplier="207:20" id="tsh-rx-RCb"/>
+                                    <constraint firstAttribute="height" constant="50" id="wnb-uX-Ffy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qj-vO-qnZ">
-                                <rect key="frame" x="243.5" y="388.5" width="39" height="30"/>
+                                <rect key="frame" x="364.5" y="652" width="39" height="30"/>
                                 <state key="normal" title="Reset"/>
                                 <connections>
-                                    <action selector="ResetHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pkm-7R-cU3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NR-1S-7gH">
-                                <rect key="frame" x="166.5" y="388.5" width="42" height="30"/>
-                                <state key="normal" title="Pause"/>
-                                <connections>
-                                    <action selector="PauseHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZN9-nm-mKD"/>
+                                    <action selector="resetButonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yfy-H6-gS3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or3-xq-F6F">
-                                <rect key="frame" x="97.5" y="388.5" width="34" height="30"/>
+                                <rect key="frame" x="218.5" y="652" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <action selector="StartHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IpR-Kh-UBY"/>
+                                    <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jo9-MU-3ga"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NR-1S-7gH">
+                                <rect key="frame" x="287.5" y="652" width="42" height="30"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jjd-Gx-rJ9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uh8-fm-Hxg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0B1-gm-RMy"/>
-                            <constraint firstItem="5qj-vO-qnZ" firstAttribute="top" secondItem="6MH-UM-8jV" secondAttribute="bottom" constant="40" id="8Le-Ec-Erv"/>
-                            <constraint firstItem="or3-xq-F6F" firstAttribute="top" secondItem="6MH-UM-8jV" secondAttribute="bottom" constant="40" id="9Lb-bq-g70"/>
-                            <constraint firstItem="0NR-1S-7gH" firstAttribute="leading" secondItem="or3-xq-F6F" secondAttribute="trailing" constant="35" id="9TT-e6-Qzk"/>
+                            <constraint firstItem="uh8-fm-Hxg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="4FE-Xh-qBv"/>
                             <constraint firstItem="uh8-fm-Hxg" firstAttribute="top" secondItem="3YQ-iB-m7Z" secondAttribute="bottom" constant="63" id="BC4-oU-wOa"/>
-                            <constraint firstItem="0NR-1S-7gH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CpI-J8-GM3"/>
-                            <constraint firstItem="5qj-vO-qnZ" firstAttribute="leading" secondItem="0NR-1S-7gH" secondAttribute="trailing" constant="35" id="Hv3-J6-HOW"/>
+                            <constraint firstItem="0NR-1S-7gH" firstAttribute="leading" secondItem="or3-xq-F6F" secondAttribute="trailing" constant="35" id="HzL-LU-0sI"/>
                             <constraint firstItem="6MH-UM-8jV" firstAttribute="top" secondItem="uh8-fm-Hxg" secondAttribute="bottom" constant="115" id="JQo-Ao-0wf"/>
+                            <constraint firstItem="or3-xq-F6F" firstAttribute="top" secondItem="6MH-UM-8jV" secondAttribute="bottom" constant="40" id="Lnr-rZ-9rG"/>
+                            <constraint firstItem="0NR-1S-7gH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P4z-Oh-EGv"/>
                             <constraint firstItem="6MH-UM-8jV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="RzV-qB-qNS"/>
-                            <constraint firstItem="0NR-1S-7gH" firstAttribute="top" secondItem="6MH-UM-8jV" secondAttribute="bottom" constant="40" id="YuF-Zu-VAs"/>
+                            <constraint firstItem="5qj-vO-qnZ" firstAttribute="leading" secondItem="0NR-1S-7gH" secondAttribute="trailing" constant="35" id="Tsm-iA-uSS"/>
+                            <constraint firstItem="5qj-vO-qnZ" firstAttribute="top" secondItem="6MH-UM-8jV" secondAttribute="bottom" constant="40" id="UWW-ip-z65"/>
+                            <constraint firstItem="3YQ-iB-m7Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a18-KO-k25"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uh8-fm-Hxg" secondAttribute="trailing" constant="50" id="a7z-1w-dYh"/>
+                            <constraint firstItem="0NR-1S-7gH" firstAttribute="top" secondItem="6MH-UM-8jV" secondAttribute="bottom" constant="40" id="cF5-Ge-TvL"/>
+                            <constraint firstItem="uh8-fm-Hxg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fgv-DA-clq"/>
                             <constraint firstItem="3YQ-iB-m7Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mcK-te-0b2"/>
                             <constraint firstItem="6MH-UM-8jV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uMC-xd-EHO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="MessageLabel" destination="uh8-fm-Hxg" id="tZc-Ma-YfM"/>
-                        <outlet property="TextField" destination="6MH-UM-8jV" id="0Rg-59-gGJ"/>
-                        <outlet property="textField" destination="6MH-UM-8jV" id="4xI-J2-woy"/>
+                        <outlet property="messageLabel" destination="uh8-fm-Hxg" id="je1-vc-kyU"/>
+                        <outlet property="pauseButton" destination="0NR-1S-7gH" id="IJv-Dd-UvU"/>
+                        <outlet property="resetButton" destination="5qj-vO-qnZ" id="ykw-aX-qNf"/>
+                        <outlet property="startButton" destination="or3-xq-F6F" id="bQM-wB-JZs"/>
+                        <outlet property="textField" destination="6MH-UM-8jV" id="4w4-4Q-Sqf"/>
+                        <outlet property="timerLabel" destination="3YQ-iB-m7Z" id="AKz-CH-oNw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
