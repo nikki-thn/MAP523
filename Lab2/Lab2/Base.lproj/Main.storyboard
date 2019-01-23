@@ -44,21 +44,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qj-vO-qnZ">
-                                <rect key="frame" x="364.5" y="652" width="39" height="30"/>
+                                <rect key="frame" x="368.5" y="652" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="gK1-Te-Vn1"/>
+                                </constraints>
                                 <state key="normal" title="Reset"/>
                                 <connections>
                                     <action selector="resetButonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yfy-H6-gS3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or3-xq-F6F">
-                                <rect key="frame" x="218.5" y="652" width="34" height="30"/>
+                                <rect key="frame" x="198.5" y="652" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NDU-3C-wH8"/>
+                                </constraints>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jo9-MU-3ga"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NR-1S-7gH">
-                                <rect key="frame" x="287.5" y="652" width="42" height="30"/>
+                                <rect key="frame" x="283.5" y="652" width="50" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="gAw-R7-IJi"/>
+                                </constraints>
                                 <state key="normal" title="Pause"/>
                                 <connections>
                                     <action selector="pauseButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jjd-Gx-rJ9"/>
