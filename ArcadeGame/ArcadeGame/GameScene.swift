@@ -8,6 +8,8 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate  {
     
@@ -30,7 +32,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     var green = 5
     var gameHasEnded = false
     var gameStarted = false
-    var moveFactor: CGFloat = 1000000000
     
     let ballCategory: UInt32 = 0x1 << 1
     let paddleCategory: UInt32 = 0x1 << 2
@@ -38,44 +39,74 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     let greenBrickCategory: UInt32 = 0x1 << 4
     let blueBrickCategory: UInt32 = 0x1 << 5
     let bottomCategory: UInt32 = 0x1 << 6
+    let borderCategory: UInt32 = 0x1 << 7
+    
+
+    
     
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
         
+        //create border to trap the ball object
         let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
         border.friction = 0
         self.physicsBody = border
         border.mass = 100000
+        border.categoryBitMask = borderCategory
+        border.contactTestBitMask = ballCategory
         
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0) //for gravity
         self.physicsWorld.contactDelegate = self
+
+        
+        //for start label
+        gameOverLabel = childNode(withName: "gameOverLabel") as? SKLabelNode
+        gameOverLabel?.isHidden = false
+        gameOverLabel?.fontSize = 50
+        gameOverLabel?.position = CGPoint(x: 0, y: 100)
+        gameOverLabel?.text = "Touch the screen to start"
+        
+        scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+        scoreLabel?.fontSize = 50
+        scoreLabel?.position = CGPoint(x: -size.width / 2 + 200, y: size.height / 2 - 100)
+        scoreLabel?.text = "Score: \(score)"
+        
+        //playBackgroundSound()
     }
     
     func startGame() {
+        
+        //declare the nodes
         floor = childNode(withName: "bottom") as? SKSpriteNode
         ball = childNode(withName: "ball") as? SKSpriteNode
         paddle = childNode(withName: "paddle") as? SKSpriteNode
+        
+        //apply impulse so the ball moves
         ball?.physicsBody!.applyImpulse(CGVector(dx: 50, dy: -50))
-        paddle?.physicsBody!.mass = 100000
+        paddle?.physicsBody!.mass = 100000 //
+        
+        //contact categories
         ball?.physicsBody!.categoryBitMask = ballCategory
         ball?.physicsBody!.contactTestBitMask = bottomCategory
+        ball?.physicsBody!.contactTestBitMask = paddleCategory
         ball?.physicsBody!.contactTestBitMask = greenBrickCategory
         ball?.physicsBody!.contactTestBitMask = blueBrickCategory
         ball?.physicsBody!.contactTestBitMask = yellowBrickCategory
+        ball?.physicsBody!.contactTestBitMask = borderCategory
         
         floor?.physicsBody?.categoryBitMask = bottomCategory
         floor?.physicsBody?.contactTestBitMask = ballCategory
         
-        createBrick(color: "yellow", adjustYPosition: 100, numRows: 3, category: yellowBrickCategory)
-        createBrick(color: "blue", adjustYPosition: 200, numRows: 2, category: blueBrickCategory)
-        createBrick(color: "green", adjustYPosition: 300, numRows: 5, category: greenBrickCategory)
+        paddle?.physicsBody?.categoryBitMask = paddleCategory
+        paddle?.physicsBody!.contactTestBitMask = ballCategory
         
-        scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
-        scoreLabel?.fontSize = 50
-        scoreLabel?.text = "Score: \(score)"
+        //call createBrick method
+        createBrick(color: "yellow", adjustYPosition: 150, numRows: 3, category: yellowBrickCategory)
+        createBrick(color: "blue", adjustYPosition: 250, numRows: 2, category: blueBrickCategory)
+        createBrick(color: "green", adjustYPosition: 350, numRows: 5, category: greenBrickCategory)
         
-        gameOverLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+        //hide gameOverLabel
         gameOverLabel?.text = ""
         gameOverLabel?.isHidden = true
     }
@@ -109,20 +140,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     }
     
     func gameEndedEffect() {
+        physicsWorld.gravity = CGVector(dx: 0, dy: -1.0)
         for child in self.children{
             if child.name == "brick"{
                 child.physicsBody? = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 20))
                 child.physicsBody?.affectedByGravity = true
-                //child.physicsBody?.mass = 10000000
-               // child.physicsBody?.allowsRotation = true
-                child.physicsBody?.angularDamping = 100
-                child.physicsBody?.friction = -10000
-                child.physicsBody?.angularVelocity = 500
-                child.physicsBody?.linearDamping = 500
-                child.physicsBody?.applyForce(CGVector(dx: 30000, dy: 30000))
+                child.physicsBody?.mass = 1000
             }
         }
-
     }
     
     func clearNodes() {
@@ -172,21 +197,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             score += yellow
             scoreLabel?.text = "Score: \(score)"
             print("Yellow contact has been made.")
+            audioPlayer.playImpactSound(sound: "impact2")
         } else if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blueBrickCategory {
             secondBody.node?.removeFromParent()
             score += blue
             scoreLabel?.text = "Score: \(score)"
             print("Blue contact has been made.")
+            audioPlayer.playImpactSound(sound: "impact2")
         } else if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == greenBrickCategory {
             secondBody.node?.removeFromParent()
             score += green
             scoreLabel?.text = "Score: \(score)"
             print("Green contact has been made.")
+            audioPlayer.playImpactSound(sound: "impact2")
+        } else if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == paddleCategory {
+            audioPlayer.playImpactSound(sound: "impact1")
+        } else if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == borderCategory {
+            audioPlayer.playImpactSound(sound: "impact1")
         } else if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == bottomCategory {
             firstBody.node?.removeFromParent()
+            paddle?.removeFromParent()
             print("Bottom contact has been made.")
             gameOver()
             gameHasEnded = true
+            audioPlayer.playImpactSound(sound: "gameOver")
         }
         
         if gameHasEnded == false {
@@ -194,23 +228,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
+
+    
     //func speedUp(speed: CGFloat) {
     func speedUp() {
-//        print("call")
-//        moveFactor *= 50000000000
-//        ball?.position = CGPoint(x: (0 + moveFactor * CGFloat(score)), y: (0 + moveFactor * CGFloat(score)))
-         ball?.physicsBody!.angularDamping += 0.001
-        ball?.physicsBody!.restitution += 0.0005
+        ball?.physicsBody!.angularDamping +=  0.1 //0.001
+        ball?.physicsBody!.restitution += 0.01 //0.0005
     }
     
     func gameOver() {
         gameEndedEffect()
-        //sleep(5)
+            
+        scoreLabel?.position = CGPoint(x: 0, y: 200)
         gameOverLabel?.isHidden = false
-        gameOverLabel?.fontSize = 150
+        gameOverLabel?.fontSize = 100
         gameOverLabel?.position = CGPoint(x: 0, y: 100)
         gameOverLabel?.text = "Game over"
-        //clearNodes()
     }
     
 }

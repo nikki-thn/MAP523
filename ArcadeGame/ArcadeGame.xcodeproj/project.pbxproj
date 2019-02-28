@@ -15,6 +15,17 @@
 		A11C6A35221CAEA4007F256C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11C6A33221CAEA4007F256C /* Main.storyboard */; };
 		A11C6A37221CAEA6007F256C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11C6A36221CAEA6007F256C /* Assets.xcassets */; };
 		A11C6A3A221CAEA6007F256C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11C6A38221CAEA6007F256C /* LaunchScreen.storyboard */; };
+		A19289F32227880B003C031E /* The_Tesseract.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A19289F22227880A003C031E /* The_Tesseract.mp3 */; };
+		A19289F5222789E4003C031E /* impact1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A19289F4222789E4003C031E /* impact1.mp3 */; };
+		A19289F722279000003C031E /* impact2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A19289F622279000003C031E /* impact2.mp3 */; };
+		A19289F9222826C1003C031E /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A19289F8222826C1003C031E /* gameOver.mp3 */; };
+		A19289FB22283130003C031E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19289FA22283130003C031E /* AboutViewController.swift */; };
+		A19289FD22283148003C031E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19289FC22283148003C031E /* SettingsViewController.swift */; };
+		A19289FF22283358003C031E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19289FE22283358003C031E /* MainViewController.swift */; };
+		A1928A01222834F9003C031E /* SetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1928A00222834F9003C031E /* SetButtons.swift */; };
+		A1928A0322283CE4003C031E /* background.mov in Resources */ = {isa = PBXBuildFile; fileRef = A1928A0222283CE4003C031E /* background.mov */; };
+		A1928A05222844C5003C031E /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1928A04222844C5003C031E /* Credits.txt */; };
+		A1928A0A22284F04003C031E /* AudioPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1928A0922284F04003C031E /* AudioPLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +39,17 @@
 		A11C6A36221CAEA6007F256C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A11C6A39221CAEA6007F256C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A11C6A3B221CAEA6007F256C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A19289F22227880A003C031E /* The_Tesseract.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = The_Tesseract.mp3; sourceTree = "<group>"; };
+		A19289F4222789E4003C031E /* impact1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impact1.mp3; sourceTree = "<group>"; };
+		A19289F622279000003C031E /* impact2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impact2.mp3; sourceTree = "<group>"; };
+		A19289F8222826C1003C031E /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
+		A19289FA22283130003C031E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A19289FC22283148003C031E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A19289FE22283358003C031E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A1928A00222834F9003C031E /* SetButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetButtons.swift; sourceTree = "<group>"; };
+		A1928A0222283CE4003C031E /* background.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = background.mov; sourceTree = "<group>"; };
+		A1928A04222844C5003C031E /* Credits.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Credits.txt; sourceTree = "<group>"; };
+		A1928A0922284F04003C031E /* AudioPLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +85,33 @@
 				A11C6A29221CAEA4007F256C /* AppDelegate.swift */,
 				A11C6A2B221CAEA4007F256C /* GameScene.sks */,
 				A11C6A2D221CAEA4007F256C /* Actions.sks */,
+				A1928A04222844C5003C031E /* Credits.txt */,
 				A11C6A2F221CAEA4007F256C /* GameScene.swift */,
+				A1928A0922284F04003C031E /* AudioPLayer.swift */,
 				A11C6A31221CAEA4007F256C /* GameViewController.swift */,
 				A11C6A33221CAEA4007F256C /* Main.storyboard */,
+				A19289FE22283358003C031E /* MainViewController.swift */,
+				A19289FA22283130003C031E /* AboutViewController.swift */,
+				A1928A00222834F9003C031E /* SetButtons.swift */,
+				A19289FC22283148003C031E /* SettingsViewController.swift */,
 				A11C6A36221CAEA6007F256C /* Assets.xcassets */,
+				A1928A0622284668003C031E /* audio */,
 				A11C6A38221CAEA6007F256C /* LaunchScreen.storyboard */,
 				A11C6A3B221CAEA6007F256C /* Info.plist */,
 			);
 			path = ArcadeGame;
+			sourceTree = "<group>";
+		};
+		A1928A0622284668003C031E /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				A1928A0222283CE4003C031E /* background.mov */,
+				A19289F4222789E4003C031E /* impact1.mp3 */,
+				A19289F8222826C1003C031E /* gameOver.mp3 */,
+				A19289F22227880A003C031E /* The_Tesseract.mp3 */,
+				A19289F622279000003C031E /* impact2.mp3 */,
+			);
+			path = audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,10 +173,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A11C6A35221CAEA4007F256C /* Main.storyboard in Resources */,
+				A19289F722279000003C031E /* impact2.mp3 in Resources */,
+				A19289F32227880B003C031E /* The_Tesseract.mp3 in Resources */,
 				A11C6A2C221CAEA4007F256C /* GameScene.sks in Resources */,
 				A11C6A37221CAEA6007F256C /* Assets.xcassets in Resources */,
 				A11C6A3A221CAEA6007F256C /* LaunchScreen.storyboard in Resources */,
+				A1928A0322283CE4003C031E /* background.mov in Resources */,
+				A1928A05222844C5003C031E /* Credits.txt in Resources */,
 				A11C6A2E221CAEA4007F256C /* Actions.sks in Resources */,
+				A19289F5222789E4003C031E /* impact1.mp3 in Resources */,
+				A19289F9222826C1003C031E /* gameOver.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +194,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A11C6A30221CAEA4007F256C /* GameScene.swift in Sources */,
+				A19289FD22283148003C031E /* SettingsViewController.swift in Sources */,
 				A11C6A32221CAEA4007F256C /* GameViewController.swift in Sources */,
+				A1928A0A22284F04003C031E /* AudioPLayer.swift in Sources */,
+				A1928A01222834F9003C031E /* SetButtons.swift in Sources */,
+				A19289FF22283358003C031E /* MainViewController.swift in Sources */,
+				A19289FB22283130003C031E /* AboutViewController.swift in Sources */,
 				A11C6A2A221CAEA4007F256C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
