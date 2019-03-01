@@ -41,9 +41,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     let bottomCategory: UInt32 = 0x1 << 6
     let borderCategory: UInt32 = 0x1 << 7
     
-
-    
-    
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
@@ -72,16 +69,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         scoreLabel?.position = CGPoint(x: -size.width / 2 + 200, y: size.height / 2 - 100)
         scoreLabel?.text = "Score: \(score)"
         
-        //playBackgroundSound()
     }
     
     func startGame() {
+        
+        let quitBtn = SKSpriteNode(imageNamed: "close")
+        quitBtn.size = CGSize(width:50, height:50)
+        quitBtn.name = "quit"
+       // quitBtn.isUserInteractionEnabled = true
+        
+        quitBtn.position = CGPoint(x: size.width / 2 - 100, y: size.height / 2 - 80)
+        addChild(quitBtn)
         
         //declare the nodes
         floor = childNode(withName: "bottom") as? SKSpriteNode
         ball = childNode(withName: "ball") as? SKSpriteNode
         paddle = childNode(withName: "paddle") as? SKSpriteNode
-        
+       
         //apply impulse so the ball moves
         ball?.physicsBody!.applyImpulse(CGVector(dx: 50, dy: -50))
         paddle?.physicsBody!.mass = 100000 //
@@ -139,6 +143,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
+    func stopGame() {
+        paddle?.isUserInteractionEnabled = false
+        audioPlayer.muteBackgroundSound()
+        audioPlayer.backgroundSoundIsMuted = true
+        print("called")
+    }
+    
     func gameEndedEffect() {
         physicsWorld.gravity = CGVector(dx: 0, dy: -1.0)
         for child in self.children{
@@ -159,6 +170,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        let touch = touches.first
+        if let location = touch?.location(in: self) {
+            let theNodes = nodes(at: location)
+            
+            //Iterate through all elements on the scene to see if the click event has happened on the "Play/Resume" button
+            for node in theNodes {
+                if node.name == "quit" {
+                   stopGame()
+                }
+            }
+        }
+        
         for touch in touches {
             let touchLocation = touch.location(in: self)
             paddle?.position.x = touchLocation.x
@@ -228,12 +252,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
-
-    
-    //func speedUp(speed: CGFloat) {
     func speedUp() {
-        ball?.physicsBody!.angularDamping +=  0.1 //0.001
-        ball?.physicsBody!.restitution += 0.01 //0.0005
+        ball?.physicsBody!.angularDamping +=  0.001
+        ball?.physicsBody!.restitution += 0.0005
     }
     
     func gameOver() {

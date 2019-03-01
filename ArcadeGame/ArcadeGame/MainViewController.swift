@@ -10,9 +10,17 @@ import UIKit
 import AVFoundation
 
 class MainViewController: UIViewController {
-
+    
+    @IBAction func btnTapped(_ sender: Any) {
+        audioPlayer.playBtnTappedSound()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        audioPlayer.playBackgroundSound()
+        
+        if audioPlayer.firstPlay == true {
+            audioPlayer.playBackgroundSound()
+            audioPlayer.firstPlay = false
+        }
     }
 }

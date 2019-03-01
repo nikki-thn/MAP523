@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10B45F7222893E600F773FA /* btnTapped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A10B45F6222893E600F773FA /* btnTapped.mp3 */; };
 		A11C6A2A221CAEA4007F256C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11C6A29221CAEA4007F256C /* AppDelegate.swift */; };
 		A11C6A2C221CAEA4007F256C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A11C6A2B221CAEA4007F256C /* GameScene.sks */; };
 		A11C6A2E221CAEA4007F256C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A11C6A2D221CAEA4007F256C /* Actions.sks */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10B45F6222893E600F773FA /* btnTapped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = btnTapped.mp3; sourceTree = "<group>"; };
 		A11C6A26221CAEA4007F256C /* ArcadeGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArcadeGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A11C6A29221CAEA4007F256C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A11C6A2B221CAEA4007F256C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		A1928A0622284668003C031E /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				A10B45F6222893E600F773FA /* btnTapped.mp3 */,
 				A1928A0222283CE4003C031E /* background.mov */,
 				A19289F4222789E4003C031E /* impact1.mp3 */,
 				A19289F8222826C1003C031E /* gameOver.mp3 */,
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A11C6A35221CAEA4007F256C /* Main.storyboard in Resources */,
+				A10B45F7222893E600F773FA /* btnTapped.mp3 in Resources */,
 				A19289F722279000003C031E /* impact2.mp3 in Resources */,
 				A19289F32227880B003C031E /* The_Tesseract.mp3 in Resources */,
 				A11C6A2C221CAEA4007F256C /* GameScene.sks in Resources */,

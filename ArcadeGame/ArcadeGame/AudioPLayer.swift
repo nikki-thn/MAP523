@@ -13,11 +13,12 @@ struct audioPlayer {
     
     static var backgroundSoundIsMuted = false
     static var effectSoundIsMuted = false
+    static var firstPlay = true
     static var backgroundPlayer = AVAudioPlayer()
     static var soundEffectPlayer = AVAudioPlayer()
     
     static func playBackgroundSound() {
-        if backgroundSoundIsMuted == false {
+        if backgroundSoundIsMuted == false && firstPlay == true {
             let AssortedMusics = NSURL(fileURLWithPath: Bundle.main.path(forResource: "The_Tesseract", ofType: "mp3")!)
             audioPlayer.backgroundPlayer = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
             audioPlayer.backgroundPlayer.prepareToPlay()
@@ -36,24 +37,20 @@ struct audioPlayer {
         }
     }
     
+    static func playBtnTappedSound() {
+        if audioPlayer.effectSoundIsMuted == false  {
+            audioPlayer.playImpactSound(sound: "btnTapped")
+        }
+    }
+    
     static func muteBackgroundSound() {
         if audioPlayer.backgroundPlayer.isPlaying {
             audioPlayer.backgroundPlayer.pause()
         }
     }
     
-    static func muteEffectSound() {
-        if audioPlayer.soundEffectPlayer.isPlaying {
-            audioPlayer.soundEffectPlayer.pause()
-        }
-    }
-    
     static func unmuteBackgroundSound() {
         audioPlayer.backgroundPlayer.play()
-    }
-    
-    static func unmuteEffectSound() {
-        audioPlayer.soundEffectPlayer.play()
     }
 }
 
