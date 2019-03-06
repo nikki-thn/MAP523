@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A14E7420222CBC23008B1607 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E741F222CBC23008B1607 /* AppDelegate.swift */; };
+		A14E7422222CBC23008B1607 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A14E7421222CBC23008B1607 /* GameScene.sks */; };
+		A14E7424222CBC23008B1607 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A14E7423222CBC23008B1607 /* Actions.sks */; };
+		A14E7426222CBC23008B1607 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E7425222CBC23008B1607 /* GameScene.swift */; };
+		A14E7428222CBC23008B1607 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E7427222CBC23008B1607 /* GameViewController.swift */; };
+		A14E742B222CBC23008B1607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E7429222CBC23008B1607 /* Main.storyboard */; };
+		A14E742D222CBC25008B1607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14E742C222CBC25008B1607 /* Assets.xcassets */; };
+		A14E7430222CBC25008B1607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E742E222CBC25008B1607 /* LaunchScreen.storyboard */; };
+		A14E743A222CC0D8008B1607 /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = A14E7439222CC0D8008B1607 /* Credits.txt */; };
+		A14E743F222CC0F9008B1607 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E743B222CC0F9008B1607 /* SettingsViewController.swift */; };
+		A14E7440222CC0F9008B1607 /* SetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E743C222CC0F9008B1607 /* SetButtons.swift */; };
+		A14E7441222CC0F9008B1607 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E743D222CC0F9008B1607 /* MainViewController.swift */; };
+		A14E7442222CC0F9008B1607 /* AudioPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E743E222CC0F9008B1607 /* AudioPLayer.swift */; };
+		A14E7450222EFC32008B1607 /* btnTapped.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E744A222EFC32008B1607 /* btnTapped.mp3 */; };
+		A14E7454222EFE43008B1607 /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E7453222EFE43008B1607 /* coin.mp3 */; };
+		A14E7456222EFFD8008B1607 /* gainLife.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E7455222EFFD8008B1607 /* gainLife.mp3 */; };
+		A14E7458222F008C008B1607 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E7457222F008B008B1607 /* gameOver.mp3 */; };
+		A14E745A222F0DC1008B1607 /* Caketown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E7459222F0DC1008B1607 /* Caketown.mp3 */; };
+		A14E745C222F1487008B1607 /* loseLife.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E745B222F1487008B1607 /* loseLife.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A14E741C222CBC23008B1607 /* Komac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A14E741F222CBC23008B1607 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A14E7421222CBC23008B1607 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		A14E7423222CBC23008B1607 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		A14E7425222CBC23008B1607 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		A14E7427222CBC23008B1607 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A14E742A222CBC23008B1607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A14E742C222CBC25008B1607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A14E742F222CBC25008B1607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A14E7431222CBC25008B1607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A14E7439222CC0D8008B1607 /* Credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.txt; sourceTree = "<group>"; };
+		A14E743B222CC0F9008B1607 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A14E743C222CC0F9008B1607 /* SetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetButtons.swift; sourceTree = "<group>"; };
+		A14E743D222CC0F9008B1607 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A14E743E222CC0F9008B1607 /* AudioPLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPLayer.swift; sourceTree = "<group>"; };
+		A14E744A222EFC32008B1607 /* btnTapped.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = btnTapped.mp3; sourceTree = "<group>"; };
+		A14E7453222EFE43008B1607 /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
+		A14E7455222EFFD8008B1607 /* gainLife.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gainLife.mp3; sourceTree = "<group>"; };
+		A14E7457222F008B008B1607 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
+		A14E7459222F0DC1008B1607 /* Caketown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Caketown.mp3; sourceTree = "<group>"; };
+		A14E745B222F1487008B1607 /* loseLife.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loseLife.mp3; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A14E7419222CBC23008B1607 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A14E7413222CBC23008B1607 = {
+			isa = PBXGroup;
+			children = (
+				A14E741E222CBC23008B1607 /* Komac */,
+				A14E741D222CBC23008B1607 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A14E741D222CBC23008B1607 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A14E741C222CBC23008B1607 /* Komac.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A14E741E222CBC23008B1607 /* Komac */ = {
+			isa = PBXGroup;
+			children = (
+				A14E741F222CBC23008B1607 /* AppDelegate.swift */,
+				A14E7421222CBC23008B1607 /* GameScene.sks */,
+				A14E7423222CBC23008B1607 /* Actions.sks */,
+				A14E7425222CBC23008B1607 /* GameScene.swift */,
+				A14E743E222CC0F9008B1607 /* AudioPLayer.swift */,
+				A14E743D222CC0F9008B1607 /* MainViewController.swift */,
+				A14E743C222CC0F9008B1607 /* SetButtons.swift */,
+				A14E743B222CC0F9008B1607 /* SettingsViewController.swift */,
+				A14E7427222CBC23008B1607 /* GameViewController.swift */,
+				A14E7429222CBC23008B1607 /* Main.storyboard */,
+				A14E742C222CBC25008B1607 /* Assets.xcassets */,
+				A14E7439222CC0D8008B1607 /* Credits.txt */,
+				A14E742E222CBC25008B1607 /* LaunchScreen.storyboard */,
+				A14E7457222F008B008B1607 /* gameOver.mp3 */,
+				A14E744A222EFC32008B1607 /* btnTapped.mp3 */,
+				A14E745B222F1487008B1607 /* loseLife.mp3 */,
+				A14E7453222EFE43008B1607 /* coin.mp3 */,
+				A14E7455222EFFD8008B1607 /* gainLife.mp3 */,
+				A14E7459222F0DC1008B1607 /* Caketown.mp3 */,
+				A14E7431222CBC25008B1607 /* Info.plist */,
+			);
+			path = Komac;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A14E741B222CBC23008B1607 /* Komac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A14E7434222CBC25008B1607 /* Build configuration list for PBXNativeTarget "Komac" */;
+			buildPhases = (
+				A14E7418222CBC23008B1607 /* Sources */,
+				A14E7419222CBC23008B1607 /* Frameworks */,
+				A14E741A222CBC23008B1607 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Komac;
+			productName = Komac;
+			productReference = A14E741C222CBC23008B1607 /* Komac.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A14E7414222CBC23008B1607 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = PenguinExpress;
+				TargetAttributes = {
+					A14E741B222CBC23008B1607 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = A14E7417222CBC23008B1607 /* Build configuration list for PBXProject "Komac" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A14E7413222CBC23008B1607;
+			productRefGroup = A14E741D222CBC23008B1607 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A14E741B222CBC23008B1607 /* Komac */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A14E741A222CBC23008B1607 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14E7454222EFE43008B1607 /* coin.mp3 in Resources */,
+				A14E742B222CBC23008B1607 /* Main.storyboard in Resources */,
+				A14E7422222CBC23008B1607 /* GameScene.sks in Resources */,
+				A14E742D222CBC25008B1607 /* Assets.xcassets in Resources */,
+				A14E7430222CBC25008B1607 /* LaunchScreen.storyboard in Resources */,
+				A14E743A222CC0D8008B1607 /* Credits.txt in Resources */,
+				A14E7458222F008C008B1607 /* gameOver.mp3 in Resources */,
+				A14E7450222EFC32008B1607 /* btnTapped.mp3 in Resources */,
+				A14E745C222F1487008B1607 /* loseLife.mp3 in Resources */,
+				A14E7424222CBC23008B1607 /* Actions.sks in Resources */,
+				A14E745A222F0DC1008B1607 /* Caketown.mp3 in Resources */,
+				A14E7456222EFFD8008B1607 /* gainLife.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A14E7418222CBC23008B1607 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A14E7426222CBC23008B1607 /* GameScene.swift in Sources */,
+				A14E7440222CC0F9008B1607 /* SetButtons.swift in Sources */,
+				A14E7428222CBC23008B1607 /* GameViewController.swift in Sources */,
+				A14E7442222CC0F9008B1607 /* AudioPLayer.swift in Sources */,
+				A14E7441222CC0F9008B1607 /* MainViewController.swift in Sources */,
+				A14E7420222CBC23008B1607 /* AppDelegate.swift in Sources */,
+				A14E743F222CC0F9008B1607 /* SettingsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A14E7429222CBC23008B1607 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A14E742A222CBC23008B1607 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A14E742E222CBC25008B1607 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A14E742F222CBC25008B1607 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A14E7432222CBC25008B1607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A14E7433222CBC25008B1607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A14E7435222CBC25008B1607 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Komac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = PenguinExpress.Komac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A14E7436222CBC25008B1607 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Komac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = PenguinExpress.Komac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A14E7417222CBC23008B1607 /* Build configuration list for PBXProject "Komac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A14E7432222CBC25008B1607 /* Debug */,
+				A14E7433222CBC25008B1607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A14E7434222CBC25008B1607 /* Build configuration list for PBXNativeTarget "Komac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A14E7435222CBC25008B1607 /* Debug */,
+				A14E7436222CBC25008B1607 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A14E7414222CBC23008B1607 /* Project object */;
+}
