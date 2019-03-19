@@ -15,6 +15,7 @@ class GameViewController: UIViewController {
     @IBAction func closeBtnTapped(_ sender: Any) {
         audioPlayer.playBtnTappedSound()
         gamePlay.stopGame()
+        gamePlay.saveScore()
     }
 
     override func viewDidLoad() {

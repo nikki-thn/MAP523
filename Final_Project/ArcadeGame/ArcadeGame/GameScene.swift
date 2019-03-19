@@ -19,11 +19,11 @@ struct gamePlay {
     //static var paddle : SKSpriteNode?
     
     static var userName = ""
-    static var userScore = 0
+    static var score = 0
     
     static var coinTimer: Timer?
     static var cloudTimer: Timer?
-    static var obstacleTimer: Timer?
+    static var orangeShipTimer: Timer?
     static var extraLiveTimer: Timer?
     static var bombTimer: Timer?
     static var birdTimer: Timer?
@@ -31,13 +31,49 @@ struct gamePlay {
     //stop creating new elements
     static func stopTimer() {
         gamePlay.coinTimer?.invalidate()
-        gamePlay.obstacleTimer?.invalidate()
+        gamePlay.orangeShipTimer?.invalidate()
         gamePlay.extraLiveTimer?.invalidate()
         gamePlay.birdTimer?.invalidate()
     }
     
     static func stopGame() {
         gamePlay.gameHasEnded = true
+    }
+    
+    static func saveScore() {
+        
+        //insert data into table
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "userName = %@", gamePlay.userName)
+        
+        //To update a value in the database
+        do {
+            
+            let results = try context.fetch(request)
+            if results.count > 0 {
+                
+                for item in results as! [NSManagedObject] {
+                    if let username = item.value(forKey: "userName") as? String {
+                        
+                        item.setValue(score, forKey: "userScore")
+                        do {
+                            try context.save()      //Make sure that you call context.save() everytime
+                            print("\(username) has been updated")
+                        }
+                        catch {
+                            print("Error saving user score")
+                        }
+                    }
+                }
+            }
+        }
+        catch {
+            print("Error")
+        }
     }
 }
 
@@ -55,11 +91,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
    
     //node objs
     
-    //var floor : SKSpriteNode?
+    var floor : SKSpriteNode?
     var paddle : SKSpriteNode?
     
     //for scoring
-    var score = 0
+    //var score = 0
     var blue = 10
     var yellow = 15
     var green = 5
@@ -71,25 +107,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     let bulletCategory: UInt32 = 0x1 << 1
     let paddleCategory: UInt32 = 0x1 << 2
     let blueShipCategory: UInt32 = 0x1 << 3
-    let greenBrickCategory: UInt32 = 0x1 << 4
+    let cloudCategory: UInt32 = 0x1 << 4
     let blueBrickCategory: UInt32 = 0x1 << 5
     let coinCategory: UInt32 = 0x1 << 6
-    let borderCategory: UInt32 = 0x1 << 7
+    let orangeShipCategory: UInt32 = 0x1 << 7
     
     //scene constructor
     override func didMove(to view: SKView) {
         
         super.didMove(to: view)
         
+//        let background = SKSpriteNode(imageNamed: "background.png")
+//        background.position = CGPoint(x: 0, y: 0)
+//        addChild(background)
+        
         setUp()//inital set up
     }
     
     //to adjust how often an element is created
-    func startTimers(timeInterval: Double) {
+    func startTimers() {
         
-        gamePlay.coinTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: {(timer) in self.createBlueShips()})
+        gamePlay.coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createBlueShips()})
+        
+        gamePlay.orangeShipTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: {(timer) in self.createOrangeShips()})
 //
-//        gamePlay.cloudTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createCloud()})
+        gamePlay.cloudTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: {(timer) in self.createCloud()})
         
 //        gamePlay.obstacleTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createObstacle()})
 //
@@ -113,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
         scoreLabel?.fontSize = 50
         scoreLabel?.position = CGPoint(x: -size.width / 2 + 200, y: size.height / 2 - 100)
-        scoreLabel?.text = "Score: \(score)"
+        scoreLabel?.text = "Score: \(gamePlay.score)"
         
         
         //declare the nodes
@@ -121,18 +163,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
 
         //contact categories
         paddle?.physicsBody!.categoryBitMask = paddleCategory
-        paddle?.physicsBody!.contactTestBitMask = coinCategory
-        paddle?.physicsBody!.contactTestBitMask = greenBrickCategory
-        paddle?.physicsBody!.contactTestBitMask = blueBrickCategory
+        //paddle?.physicsBody!.contactTestBitMask = coinCategory
+        //paddle?.physicsBody!.contactTestBitMask = greenBrickCategory
+        //paddle?.physicsBody!.collisionBitMask = oraCategory
         paddle?.physicsBody!.collisionBitMask = blueShipCategory
+        paddle?.physicsBody!.collisionBitMask = orangeShipCategory
         paddle?.position = CGPoint(x: 0, y: -size.height / 2 + 100)
         paddle?.physicsBody!.pinned = false
+        paddle?.isHidden = false
         
         gamePlay.gameHasEnded = false
         gamePlay.gameStarted = false
         
-        score = 0
-        //adjustYPosition = 150
+        gamePlay.score = 0
     }
     
     func startGame() {
@@ -141,67 +184,89 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         gameLabel?.text = ""
         gameLabel?.isHidden = true
         
-        startTimers(timeInterval:  1)
+        startTimers()
+    }
+    
+    //create clouds
+    func createCloud() {
+        let cloud = SKSpriteNode(imageNamed: "planet1")
+        cloud.size = CGSize(width: 150, height: 150)
+        cloud.physicsBody?.categoryBitMask = cloudCategory
+        cloud.physicsBody?.contactTestBitMask = 0
+        addChild(cloud)
+        
+        let maxY = size.height / 2 - cloud.size.height / 3
+        let minY = -size.height / 2 + cloud.size.height / 2
+        let range = maxY - minY
+        
+        let cloudY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
+        
+        cloud.position = CGPoint(x: size.width / 2 + cloud.size.width / 2, y: cloudY + CGFloat(50))
+        
+        let moveLeft = SKAction.moveBy(x: -size.width - cloud.size.width, y: 0, duration: 20)
+        let mySeq = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
+        cloud.run(mySeq)
     }
     
     //Create blue ships
     func createBlueShips() {
-        let blueShip = SKSpriteNode(imageNamed: "blueship")
-        blueShip.name = "coin"
-        blueShip.size = CGSize(width: 100, height: 100)
-        blueShip.physicsBody = SKPhysicsBody(rectangleOf: blueShip.size)
-        blueShip.physicsBody?.affectedByGravity = false
+        let ship = SKSpriteNode(imageNamed: "blueship")
+        ship.name = "ship"
+        ship.size = CGSize(width: 100, height: 100)
+        ship.physicsBody = SKPhysicsBody(rectangleOf: ship.size)
+        ship.physicsBody?.affectedByGravity = false
         
-        blueShip.physicsBody?.categoryBitMask = blueShipCategory
-        blueShip.physicsBody?.contactTestBitMask = bulletCategory
-        blueShip.physicsBody?.contactTestBitMask = paddleCategory
-        blueShip.physicsBody?.mass = 0
+        ship.physicsBody?.categoryBitMask = blueShipCategory
+       // ship.physicsBody?.contactTestBitMask = bulletCategory
+        //ship.physicsBody?.contactTestBitMask = paddleCategory
+        ship.physicsBody?.mass = 100
+        ship.physicsBody?.allowsRotation = false
         
-        addChild(blueShip)
+        addChild(ship)
         
-        let maxX = size.width / 2 - blueShip.size.width / 2
-        let minX = -size.width / 2 + blueShip.size.width / 2
+        let maxX = size.width / 2 - ship.size.width / 2
+        let minX = -size.width / 2 + ship.size.width / 2
         let range = maxX - minX
         
         let coinX = maxX - CGFloat(arc4random_uniform(UInt32(range)))
         
-        blueShip.position = CGPoint(x: coinX, y: size.height / 2 + blueShip.size.height / 2 )
+        ship.position = CGPoint(x: coinX, y: size.height / 2 + ship.size.height / 2 )
         
-        let moveUp = SKAction.moveBy(x: 0, y: -size.height - blueShip.size.height, duration: 4)
+        let moveUp = SKAction.moveBy(x: 0, y: -size.height - ship.size.height, duration: 4)
         let mySeq = SKAction.sequence([moveUp, SKAction.removeFromParent()])
-        blueShip.run(mySeq)
-        lastCreatedCoinPosition = CGPoint(x: coinX, y: size.height / 2 + blueShip.size.height / 2)
+        ship.run(mySeq)
+        lastCreatedCoinPosition = CGPoint(x: coinX, y: size.height / 2 + ship.size.height / 2)
     }
     
-    //create bricks
-    func createBrick(color: String, adjustYPosition: CGFloat, numRows: Int, category: UInt32) {
+    //create orange ships
+    func createOrangeShips() {
+        let ship = SKSpriteNode(imageNamed: "orangeship")
+        ship.name = "ship"
+        ship.size = CGSize(width: 75, height: 75)
+        ship.physicsBody = SKPhysicsBody(rectangleOf: ship.size)
+        ship.physicsBody?.affectedByGravity = false
         
-        //to calculate number of bricks per row
-        let tmp_element = SKSpriteNode(imageNamed: "\(color).png")
-        tmp_element.size = CGSize(width: 50, height: 20)
-        let numberOfElements = Int(size.width * 0.88 / tmp_element.size.width) - 2
-
-        for row in 0...numRows {
-            for column in 0...numberOfElements {
-                
-                let element = SKSpriteNode(imageNamed: "\(color).png")
-                element.size = CGSize(width: 50, height: 20)
-                element.name = "brick"
-                element.physicsBody = SKPhysicsBody(rectangleOf: element.size)
-                element.physicsBody?.categoryBitMask = category
-                //set contact of bricks and the ball
-                element.physicsBody?.contactTestBitMask = bulletCategory
-                element.physicsBody?.affectedByGravity = false
-                element.physicsBody?.restitution = 1
-                element.physicsBody?.allowsRotation = false
-                element.physicsBody?.mass = 10000000
-                addChild(element)
-
-                let elementX = -size.width / 2 + 100 + element.size.width * CGFloat(column)
-                let elementY = size.height / 2 - CGFloat(adjustYPosition) - (element.size.height * CGFloat(row))
-                element.position = CGPoint(x: elementX , y: elementY)
-            }
-        }
+        ship.physicsBody?.categoryBitMask = orangeShipCategory
+      //  ship.physicsBody?.contactTestBitMask = bulletCategory
+      //  ship.physicsBody?.contactTestBitMask = paddleCategory
+        ship.physicsBody?.mass = 100
+        ship.physicsBody?.allowsRotation = false
+        
+        
+        addChild(ship)
+        
+        let maxX = size.width / 2 - ship.size.width / 2
+        let minX = -size.width / 2 + ship.size.width / 2
+        let range = maxX - minX
+        
+        let coinX = maxX - CGFloat(arc4random_uniform(UInt32(range)))
+        
+        ship.position = CGPoint(x: coinX, y: size.height / 2 + ship.size.height / 2 )
+        
+        let moveUp = SKAction.moveBy(x: 0, y: -size.height - ship.size.height, duration: 10)
+        let mySeq = SKAction.sequence([moveUp, SKAction.removeFromParent()])
+        ship.run(mySeq)
+//        lastCreatedCoinPosition = CGPoint(x: coinX, y: size.height / 2 + blueShip.size.height / 2)
     }
     
     func createBullet() {
@@ -211,10 +276,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         projectile.size = CGSize(width: 20, height: 20)
         projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
         projectile.physicsBody?.isDynamic = true
-        projectile.physicsBody?.mass = 100
+        projectile.physicsBody?.mass = 0
         projectile.physicsBody?.categoryBitMask = bulletCategory
         projectile.physicsBody?.contactTestBitMask = blueShipCategory
         projectile.physicsBody?.collisionBitMask = blueShipCategory
+        projectile.physicsBody?.contactTestBitMask = orangeShipCategory
+        projectile.physicsBody?.collisionBitMask = orangeShipCategory
         projectile.physicsBody?.usesPreciseCollisionDetection = true
         
         self.addChild(projectile)
@@ -225,6 +292,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     //when user touch the screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        //user touch to start the game
+        if gamePlay.gameStarted == false {
+            gamePlay.gameStarted = true
+            startGame()
+        }
         
         if gamePlay.gameHasEnded == false{
             for touch in touches {
@@ -252,13 +325,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
 
-    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //user touch to start the game
-        if gamePlay.gameStarted == false {
-            gamePlay.gameStarted = true
-            startGame()
-        }
+//        //user touch to start the game
+//        if gamePlay.gameStarted == false {
+//            gamePlay.gameStarted = true
+//            startGame()
+//        }
     }
     
     // MARK: - SKPhysicsContactDelegate
@@ -279,24 +351,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             // Check for collisions
             if firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == blueShipCategory {
                 secondBody.node?.removeFromParent()
-                score += yellow
-                scoreLabel?.text = "Score: \(score)"
+                gamePlay.score += yellow
+                scoreLabel?.text = "Score: \(gamePlay.score)"
                 print("Yellow contact has been made.")
                 audioPlayer.playImpactSound(sound: "impact2")
-            } else if firstBody.categoryBitMask == paddleCategory && secondBody.categoryBitMask == blueShipCategory {
+            } else if firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == orangeShipCategory {
+                count += 1
+                if count == 3 {
+                    secondBody.node?.removeFromParent()
+                    gamePlay.score += green
+                    scoreLabel?.text = "Score: \(gamePlay.score)"
+                    print("Green contact has been made.")
+                    count = 0
+                }
+                audioPlayer.playImpactSound(sound: "impact2")
+            } else if firstBody.categoryBitMask == paddleCategory && (secondBody.categoryBitMask == blueShipCategory || secondBody.categoryBitMask == orangeShipCategory ) {
                 secondBody.node?.removeFromParent()
                 gameOver()
                 print("Blue contact has been made.")
                 audioPlayer.playImpactSound(sound: "impact2")
-            } else if firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == greenBrickCategory {
-                secondBody.node?.removeFromParent()
-                score += green
-                scoreLabel?.text = "Score: \(score)"
-                print("Green contact has been made.")
-                audioPlayer.playImpactSound(sound: "impact2")
             }
-            
-//            count += 1 //Speed up the ball every 10 impacts
+        
+           // count += 1 //Speed up the ball every 10 impacts
 //
 //            if count == 3 {
 //                speedUp() //speed up the game after every touch
@@ -312,20 +388,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
 //    }
 //
     
-    //for the falling bricks when game ended
-    func gameEndedEffect() {
-        audioPlayer.playImpactSound(sound: "gameOver")
-    }
-    
     //set end game scene
     func setEndGame() {
         
         paddle?.position = CGPoint(x: -size.width / 2, y: -size.height / 2)
         paddle?.physicsBody!.pinned = true
         paddle?.isHidden = true
-        paddle?.physicsBody!.pinned = true
         
         scoreLabel?.position = CGPoint(x: 0, y: 200)
+        gamePlay.gameHasEnded = true
     }
     
     //for when user clears all the bricks
@@ -339,48 +410,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     //game over ball touched the floor
     func gameOver() {
         setEndGame()
-        gameEndedEffect()
         displayLabel(textLabel: "Game Over")
         showRestartBtn()
-        saveScore()
-    }
-    
-    func saveScore() {
-
-        //insert data into table
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "userName = %@", gamePlay.userName)
-        
-        //To update a value in the database
-        do {
-            
-            let results = try context.fetch(request)
-            if results.count > 0 {
-                
-                for item in results as! [NSManagedObject] {
-                    if let username = item.value(forKey: "userName") as? String {
-                        
-                        item.setValue(score, forKey: "userScore")
-                        do {
-                            try context.save()      //Make sure that you call context.save() everytime
-                            print("\(username) has been updated")
-                        }
-                        catch {
-                            print("Error saving user score")
-                        }
-                        
-                    }
-                }
-            }
-            
-        }
-        catch {
-            print("Error")
-        }
+        gamePlay.stopTimer()
+        gamePlay.saveScore()
     }
     
     //show Restart button when game ended
@@ -418,7 +451,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     //clear all brick nodes
     func clearNodes() {
         for child in self.children{
-            if child.name == "brick"{
+            if child.name == "ship"{
                 child.removeFromParent()
             }
         }
