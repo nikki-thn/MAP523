@@ -12,6 +12,11 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBAction func closeBtnTapped(_ sender: Any) {
+        audioPlayer.playBtnTappedSound()
+        gamePlay.stopTimer()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

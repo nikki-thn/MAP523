@@ -5,7 +5,16 @@
 //  Created by Nikki Truong on 2019-03-03.
 //  Copyright © 2019 PenguinExpress. All rights reserved.
 //
+//  Last Modified March 12, 2019
 
+/* Features to be worked on:
+ 1. Stop the game and back to main
+ 2. Leaderboard and store user data to core data
+*/
+
+/* Things to make better:
+ 1. Seque handling
+*/
 import SpriteKit
 import GameplayKit
 
@@ -14,8 +23,19 @@ struct gamePlay {
     static var gameHasEnded = false
     static var gameStarted = false
     
-    static func stopGame() {
-        gamePlay.gameHasEnded = true
+    static var coinTimer: Timer?
+    static var cloudTimer: Timer?
+    static var obstacleTimer: Timer?
+    static var extraLiveTimer: Timer?
+    static var bombTimer: Timer?
+    static var birdTimer: Timer?
+    
+    //stop creating new elements
+    static func stopTimer() {
+        gamePlay.coinTimer?.invalidate()
+        gamePlay.obstacleTimer?.invalidate()
+        gamePlay.extraLiveTimer?.invalidate()
+        gamePlay.birdTimer?.invalidate()
     }
 }
 
@@ -35,17 +55,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     
     var komac: SKSpriteNode?
     var border: SKSpriteNode?
-    
-    var coinTimer: Timer?
-    var cloudTimer: Timer?
-    var obstacleTimer: Timer?
-    var extraLiveTimer: Timer?
-    var bombTimer: Timer?
-    var birdTimer: Timer?
+    var background: SKSpriteNode?
     
     var score = 0
     var life = 0
     
+    let panRec = UIPanGestureRecognizer()
+    
+    //Contact categories
     let komacCategory: UInt32 = 0x1 << 1
     let coinCategory: UInt32 = 0x1 << 2
     let cloudCategory: UInt32 = 0x1 << 3
@@ -55,14 +72,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
     let birdCategory: UInt32 = 0x1 << 7
     let borderCategory: UInt32 = 0x1 << 8
     
+    //When game scene is loaded
     override func didMove(to view: SKView) {
         
-        physicsWorld.contactDelegate = self
+        //create border to trap the ball object
+        let border = SKPhysicsBody(edgeLoopFrom: (view.scene?.frame)!)
+        border.friction = 0
+        self.physicsBody = border
+        border.mass = 100000
+        border.categoryBitMask = borderCategory
+        border.contactTestBitMask = komacCategory
         
-        setScene();
+        panRec.addTarget(self, action: #selector(pan))
+        self.view!.addGestureRecognizer(panRec)
+        
+        setScene()
         startGame()
     }
     
+    @objc func pan(_ recognizer : UIPanGestureRecognizer) {
+        let view = recognizer.view!
+        let translation = recognizer.translation(in: view)
+        let velocity = recognizer.velocity(in: view)
+
+        var vectorLength: CGFloat
+        
+        //player.velocity = velocity
+        
+        //print("x: \(translation.x)  y: \(translation.y)")
+        print("vel \(velocity)")
+        
+        if (velocity.y < 0){
+            print("up")
+            vectorLength = (pow((velocity.x), 2) + pow((velocity.y), 2)).squareRoot()
+            
+            var vector = CGVector()
+
+            vector = CGVector(dx: (translation.x - komac!.position.x) * vectorLength * 0.02, dy: (translation.y - komac!.position.y) * vectorLength * 0.02)
+        
+            komac?.physicsBody?.applyForce((vector))
+        }
+    }
+    
+    //when touches began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         //If the screen is not on "Game Over" mode, then apply the force to komac
@@ -72,7 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             let touch = touches.first
             if let location = touch?.location(in: self) {
                 let theNodes = nodes(at: location)
-                
+
                 //Iterate through all elements on the scene to see if the click event has happened on the "Play/Resume" button
                 for node in theNodes {
                     if node.name == "restart" {
@@ -84,45 +136,63 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             }
         }
     }
-    
+
+    //Check for contacts
     func didBegin(_ contact: SKPhysicsContact) {
-        //updateScore()
         
-        if contact.bodyB.categoryBitMask == coinCategory {
-            contact.bodyB.node?.removeFromParent()
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.categoryBitMask == komacCategory && secondBody.categoryBitMask == coinCategory {
+            secondBody.node?.removeFromParent()
             score += 1
             scoreLabel?.text = "Score: \(score)"
             audioPlayer.playImpactSound(sound: "coin")
-        } else if contact.bodyB.categoryBitMask == birdCategory { //contact.bodyB.categoryBitMask == bombCategory ||
-            contact.bodyB.node?.removeFromParent()
+        } else if firstBody.categoryBitMask == komacCategory && secondBody.categoryBitMask == birdCategory {
+            secondBody.node?.removeFromParent()
             life -= 1
             removeLife(numOfLives: life)
             audioPlayer.playImpactSound(sound: "loseLife")
             if life == 0 {
-                komac?.isHidden = true
                 scoreLabel?.text = "Score: \(score)"
                 clearNodes()
                 gameOver()
             }
-        } else if contact.bodyB.categoryBitMask == extraLiveCategory {
-            contact.bodyB.node?.removeFromParent()
+        } else if firstBody.categoryBitMask == komacCategory && secondBody.categoryBitMask == extraLiveCategory {
+            secondBody.node?.removeFromParent()
             life += 1
             addLife(numOfLives: life)
             audioPlayer.playImpactSound(sound: "gainLife")
-        } else if contact.bodyB.categoryBitMask == borderCategory {
-            //contact.bodyB.node?.removeFromParent()
-            print("contact")
-            audioPlayer.playImpactSound(sound: "gameOver")
-            gameOver()
+        }
+//        } else if firstBody.categoryBitMask == komacCategory && secondBody.categoryBitMask == borderCategory {
+//            print("contact")
+//            removeLives()
+//            audioPlayer.playImpactSound(sound: "gameOver")
+//            clearNodes()
+//            gameOver()
+//        }
+        else if firstBody.categoryBitMask == obstacleCategory && secondBody.categoryBitMask == borderCategory {
+            firstBody.node?.removeFromParent()
+            print("contact obstacle")
         }
     }
     
+    //when restart is touched
     func restartGame() {
-        clearNodes()
+        gamePlay.cloudTimer?.invalidate()
         setScene()
         startGame()
     }
     
+    //start game
     func startGame() {
         
         //set lives
@@ -131,38 +201,64 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
         
         runKomac() //animated Komac to run
-        createGround(); //animated ground
-        startTimers()
+        createGround() //animated ground
+        startTimers() //create coins, birds, obstacles, etc
     }
     
     func gameOver() {
+        //clearNodes()
         setGameOverScene()
-        stopTimer()
+        gamePlay.stopTimer()
     }
     
+    //set scene and other element for the game
     func setScene(){
         
-        life = 2
+        life = 3
         score = 0
         gamePlay.gameStarted = true
+        gamePlay.gameHasEnded = false
+        
+        physicsWorld.contactDelegate = self
         
         komac = childNode(withName: "komac") as? SKSpriteNode
         border = childNode(withName: "border") as? SKSpriteNode
+        background = childNode(withName: "background") as? SKSpriteNode
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
         gameLabel = childNode(withName: "gameLabel") as? SKLabelNode
         
         komac?.physicsBody?.categoryBitMask = komacCategory
-        komac?.physicsBody?.collisionBitMask = coinCategory | obstacleCategory | groundCategory | borderCategory
-        komac?.physicsBody?.contactTestBitMask = birdCategory
-        komac?.physicsBody?.contactTestBitMask = borderCategory
-        komac?.physicsBody?.contactTestBitMask = extraLiveCategory
+        komac?.physicsBody?.contactTestBitMask = borderCategory | coinCategory | obstacleCategory | birdCategory | cloudCategory | extraLiveCategory
+//        komac?.physicsBody?.collisionBitMask = coinCategory | obstacleCategory | groundCategory | borderCategory
         
         border?.physicsBody?.categoryBitMask = borderCategory
-        border?.physicsBody?.contactTestBitMask = komacCategory
+        border?.physicsBody?.contactTestBitMask = obstacleCategory
+        border?.physicsBody?.collisionBitMask = komacCategory
         
         gameLabel?.isHidden = true
         scoreLabel?.text = "Score: \(score)"
         scoreLabel?.position = CGPoint(x: -size.width / 2 + 165 , y: size.height / 2 - 150)
+    
+        let swipeRight : UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: background, action: #selector(swipedRight))
+        
+        swipeRight.direction = .right
+        
+        view?.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func swipedRight(sender: UISwipeGestureRecognizer) {
+        print("Object has been swiped")        
+    }
+    
+    func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent)
+    {
+        let touch = touches.first as! UITouch
+        let location = touch.location(in: self)
+        
+        if (background?.frame.contains(location))!
+        {
+            print("Swipe has started")
+        }
     }
     
     func runKomac() {
@@ -178,36 +274,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         komac?.position = CGPoint(x: 0, y: 0)
     }
     
+    //to adjust how often an element is created
     func startTimers() {
-        
-        coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
-        
-        cloudTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createCloud()})
-        
-        //bombTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true, block: {(timer) in self.createBomb()})
-        
-        obstacleTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: {(timer) in self.createObstacle()})
-        
-        extraLiveTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: {(timer) in self.createExtraLive()})
-        
-        birdTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true, block: { (timer) in
-            self.createBird()})
+//
+//        gamePlay.coinTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.createCoin()})
+//
+//        gamePlay.cloudTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createCloud()})
+//
+//        //bombTimer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true, block: {(timer) in self.createBomb()})
+//
+//        gamePlay.obstacleTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: {(timer) in self.createObstacle()})
+//
+//        gamePlay.extraLiveTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: {(timer) in self.createExtraLive()})
+//
+//       // gamePlay.birdTimer = Timer.scheduledTimer(withTimeInterval: 50, repeats: true, block: { (timer) in
+//            self.createBird()})
     }
     
-    func stopTimer() {
-        coinTimer?.invalidate();
-        //bombTimer?.invalidate();
-        obstacleTimer?.invalidate();
-        extraLiveTimer?.invalidate();
-        birdTimer?.invalidate();
-    }
-
-    
+    //create birds
     func createBird() {
         let bird = SKSpriteNode(imageNamed: "bird-1")
         bird.name = "bird"
         bird.size = CGSize(width: 150, height: 70)
-        bird.physicsBody = SKPhysicsBody(rectangleOf: bird.size)
+        bird.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: bird.size.width - 20, height: bird.size.height - 20))
         bird.physicsBody?.affectedByGravity = false
         
         bird.physicsBody?.categoryBitMask = birdCategory
@@ -239,6 +328,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         bird.run(SKAction.repeatForever(SKAction.animate(with: birdRun, timePerFrame: 0.2)))
     }
     
+    //create coins
     func createCoin() {
         let coin = SKSpriteNode(imageNamed: "coin")
         coin.name = "coin"
@@ -266,6 +356,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         lastCreatedCoinPosition = CGPoint(x: size.width / 2 + coin.size.width / 2, y: coinY)
     }
     
+    //create obstables
     func createObstacle() {
         let obstacle = SKSpriteNode(imageNamed: "obstacle")
         obstacle.name = "obstacle"
@@ -273,10 +364,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         obstacle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: obstacle.size.width - 50, height: obstacle.size.height - 10))
         obstacle.physicsBody?.affectedByGravity = false
         obstacle.physicsBody?.mass = 1000000
-        
+
         obstacle.physicsBody?.categoryBitMask = obstacleCategory
-        //obstacle.physicsBody?.contactTestBitMask = komacCategory
-        obstacle.physicsBody?.collisionBitMask = komacCategory
+        obstacle.physicsBody?.contactTestBitMask = borderCategory
+        obstacle.physicsBody?.contactTestBitMask = komacCategory
         
         addChild(obstacle)
         
@@ -288,11 +379,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         obstacle.position = CGPoint(x: size.width / 2 + obstacle.size.width / 2, y: obstacleY)
         
-        let moveLeft = SKAction.moveBy(x: -size.width - obstacle.size.width, y: 0, duration: 4)
+        let moveLeft = SKAction.moveBy(x: -size.width - obstacle.size.width, y: 0, duration: 3)
         let mySeq = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
         obstacle.run(mySeq)
     }
     
+    //create extra lives
     func createExtraLive() {
         if life < 5 {
             let live = SKSpriteNode(imageNamed: "health")
@@ -300,7 +392,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             live.physicsBody = SKPhysicsBody(rectangleOf:  live.size)
             live.physicsBody?.affectedByGravity = false
             live.name = "live"
-            
+
             live.physicsBody?.categoryBitMask = extraLiveCategory
             live.physicsBody?.contactTestBitMask = komacCategory
             live.physicsBody?.mass = 0
@@ -321,12 +413,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
+    //create clouds
     func createCloud() {
         let cloud = SKSpriteNode(imageNamed: "cloud")
         cloud.size = CGSize(width: 300, height: 170)
         cloud.physicsBody?.categoryBitMask = cloudCategory
-        cloud.physicsBody?.contactTestBitMask = komacCategory
-        
+        cloud.physicsBody?.contactTestBitMask = 0
         addChild(cloud)
         
         let maxY = size.height / 2 - cloud.size.height / 3
@@ -335,13 +427,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         
         let cloudY = maxY - CGFloat(arc4random_uniform(UInt32(range)))
         
-        cloud.position = CGPoint(x: size.width / 2 + cloud.size.width / 2, y: cloudY)
+        cloud.position = CGPoint(x: size.width / 2 + cloud.size.width / 2, y: cloudY + CGFloat(50))
         
         let moveLeft = SKAction.moveBy(x: -size.width - cloud.size.width, y: 0, duration: 4)
         let mySeq = SKAction.sequence([moveLeft, SKAction.removeFromParent()])
         cloud.run(mySeq)
     }
     
+    //animated ground
     func createGround() {
         let tmp_element = SKSpriteNode(imageNamed: "ground.jpg")
         let numberOfElements = Int(size.width / tmp_element.size.width) + 1
@@ -351,8 +444,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             let element = SKSpriteNode(imageNamed: "ground.jpg")
             element.size = CGSize(width: 255, height: 120)
             element.physicsBody = SKPhysicsBody(rectangleOf: element.size)
-            element.physicsBody?.categoryBitMask = groundCategory
-            element.physicsBody?.collisionBitMask = komacCategory
+           // element.physicsBody?.categoryBitMask = groundCategory
+           // element.physicsBody?.collisionBitMask = komacCategory
             element.physicsBody?.affectedByGravity = false
             element.physicsBody?.isDynamic = false
             element.physicsBody?.allowsRotation = false
@@ -368,8 +461,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
             
             let resetElement = SKAction.moveBy(x: size.width + element.size.width, y: 0, duration: 0)
             
-            let fullScreenMove = SKAction.moveBy(x: -size.width - element.size.width, y: 0,
-                                                 duration: TimeInterval(size.width + element.size.width) / speed)
+            let fullScreenMove = SKAction.moveBy(x: -size.width - element.size.width, y: 0, duration: TimeInterval(size.width + element.size.width) / speed)
             
             let elementMoveConstantly = SKAction.repeatForever(SKAction.sequence([fullScreenMove, resetElement]))
             
@@ -377,6 +469,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
+    //add life
     func addLife(numOfLives: Int) {
         let life = SKSpriteNode(imageNamed: "health")
         life.size = CGSize(width: 75, height: 75)
@@ -386,6 +479,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         addChild(life)
     }
     
+    //remove life
     func removeLife(numOfLives: Int) {
         for child in self.children{
             if child.name == "live\(numOfLives + 1)"{
@@ -395,25 +489,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         }
     }
     
+    //remove all lives when user hit side border
+    func removeLives(){
+        for number in 0...life {
+            removeLife(numOfLives: number)
+        }
+    }
+    
+    //clear nodes
     func clearNodes() {
         for child in self.children{
-            if child.name == "coin" || child.name == "bomb" || child.name == "bird" ||
-                child.name == "obstacle"{
+            if child.name == "coin" || child.name == "bird" ||
+                child.name == "obstacle" || child.name == "live" { // || child.name == "cloud"
                 child.removeFromParent()
                 break
             }
         }
     }
 
+    // set game over scene
     func setGameOverScene(){
-        scene?.isPaused = true  //Pause the scene
-        
+        //scene?.isPaused = true  //Pause the scene
+        gamePlay.gameHasEnded = true
         showRestartBtn()
         displayLabel(textLabel: "Game Over")
-        
+        komac?.isHidden = true
         scoreLabel?.position = CGPoint(x: 0, y: 200)
     }
 
+    //show the restart btn when game is over
     func showRestartBtn() {
         let restartBtn = SKSpriteNode(imageNamed: "play")
         restartBtn.size = CGSize(width:75, height:75)
@@ -422,6 +526,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate  {
         addChild(restartBtn)
     }
     
+    //label to display game over message
     func displayLabel(textLabel: String){
         gameLabel?.isHidden = false
         gameLabel?.fontSize = 100

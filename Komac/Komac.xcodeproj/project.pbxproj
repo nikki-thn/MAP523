@@ -14,7 +14,6 @@
 		A14E7428222CBC23008B1607 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E7427222CBC23008B1607 /* GameViewController.swift */; };
 		A14E742B222CBC23008B1607 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E7429222CBC23008B1607 /* Main.storyboard */; };
 		A14E742D222CBC25008B1607 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14E742C222CBC25008B1607 /* Assets.xcassets */; };
-		A14E7430222CBC25008B1607 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14E742E222CBC25008B1607 /* LaunchScreen.storyboard */; };
 		A14E743A222CC0D8008B1607 /* Credits.txt in Resources */ = {isa = PBXBuildFile; fileRef = A14E7439222CC0D8008B1607 /* Credits.txt */; };
 		A14E743F222CC0F9008B1607 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E743B222CC0F9008B1607 /* SettingsViewController.swift */; };
 		A14E7440222CC0F9008B1607 /* SetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E743C222CC0F9008B1607 /* SetButtons.swift */; };
@@ -26,6 +25,7 @@
 		A14E7458222F008C008B1607 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E7457222F008B008B1607 /* gameOver.mp3 */; };
 		A14E745A222F0DC1008B1607 /* Caketown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E7459222F0DC1008B1607 /* Caketown.mp3 */; };
 		A14E745C222F1487008B1607 /* loseLife.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A14E745B222F1487008B1607 /* loseLife.mp3 */; };
+		A19AA47322382EBA00E3022A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19AA47222382EBA00E3022A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,6 @@
 		A14E7427222CBC23008B1607 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A14E742A222CBC23008B1607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A14E742C222CBC25008B1607 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A14E742F222CBC25008B1607 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14E7431222CBC25008B1607 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14E7439222CC0D8008B1607 /* Credits.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Credits.txt; sourceTree = "<group>"; };
 		A14E743B222CC0F9008B1607 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		A14E7457222F008B008B1607 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		A14E7459222F0DC1008B1607 /* Caketown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Caketown.mp3; sourceTree = "<group>"; };
 		A14E745B222F1487008B1607 /* loseLife.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = loseLife.mp3; sourceTree = "<group>"; };
+		A19AA47222382EBA00E3022A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E87DE032237F18A00573357 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A14E7457222F008B008B1607 /* gameOver.mp3 */,
+				A14E744A222EFC32008B1607 /* btnTapped.mp3 */,
+				A14E745B222F1487008B1607 /* loseLife.mp3 */,
+				A14E7453222EFE43008B1607 /* coin.mp3 */,
+				A14E7455222EFFD8008B1607 /* gainLife.mp3 */,
+				A14E7459222F0DC1008B1607 /* Caketown.mp3 */,
+			);
+			path = sounds;
+			sourceTree = "<group>";
+		};
 		A14E7413222CBC23008B1607 = {
 			isa = PBXGroup;
 			children = (
@@ -93,14 +106,9 @@
 				A14E7427222CBC23008B1607 /* GameViewController.swift */,
 				A14E7429222CBC23008B1607 /* Main.storyboard */,
 				A14E742C222CBC25008B1607 /* Assets.xcassets */,
+				A19AA47222382EBA00E3022A /* LaunchScreen.storyboard */,
 				A14E7439222CC0D8008B1607 /* Credits.txt */,
-				A14E742E222CBC25008B1607 /* LaunchScreen.storyboard */,
-				A14E7457222F008B008B1607 /* gameOver.mp3 */,
-				A14E744A222EFC32008B1607 /* btnTapped.mp3 */,
-				A14E745B222F1487008B1607 /* loseLife.mp3 */,
-				A14E7453222EFE43008B1607 /* coin.mp3 */,
-				A14E7455222EFFD8008B1607 /* gainLife.mp3 */,
-				A14E7459222F0DC1008B1607 /* Caketown.mp3 */,
+				2E87DE032237F18A00573357 /* sounds */,
 				A14E7431222CBC25008B1607 /* Info.plist */,
 			);
 			path = Komac;
@@ -168,9 +176,9 @@
 				A14E742B222CBC23008B1607 /* Main.storyboard in Resources */,
 				A14E7422222CBC23008B1607 /* GameScene.sks in Resources */,
 				A14E742D222CBC25008B1607 /* Assets.xcassets in Resources */,
-				A14E7430222CBC25008B1607 /* LaunchScreen.storyboard in Resources */,
 				A14E743A222CC0D8008B1607 /* Credits.txt in Resources */,
 				A14E7458222F008C008B1607 /* gameOver.mp3 in Resources */,
+				A19AA47322382EBA00E3022A /* LaunchScreen.storyboard in Resources */,
 				A14E7450222EFC32008B1607 /* btnTapped.mp3 in Resources */,
 				A14E745C222F1487008B1607 /* loseLife.mp3 in Resources */,
 				A14E7424222CBC23008B1607 /* Actions.sks in Resources */,
@@ -205,14 +213,6 @@
 				A14E742A222CBC23008B1607 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A14E742E222CBC25008B1607 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A14E742F222CBC25008B1607 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -23,7 +23,7 @@ struct audioPlayer {
             audioPlayer.backgroundPlayer = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
             audioPlayer.backgroundPlayer.prepareToPlay()
             audioPlayer.backgroundPlayer.numberOfLoops = -1
-            //audioPlayer.backgroundPlayer.play()
+            audioPlayer.backgroundPlayer.play()
         }
     }
     
@@ -33,24 +33,24 @@ struct audioPlayer {
             audioPlayer.soundEffectPlayer = try! AVAudioPlayer(contentsOf: AssortedMusics as URL)
             audioPlayer.soundEffectPlayer.prepareToPlay()
             audioPlayer.soundEffectPlayer.numberOfLoops = 0
-            //audioPlayer.soundEffectPlayer.play()
+            audioPlayer.soundEffectPlayer.play()
         }
     }
     
     static func playBtnTappedSound() {
         if audioPlayer.effectSoundIsMuted == false  {
-            //audioPlayer.playImpactSound(sound: "btnTapped")
+            audioPlayer.playImpactSound(sound: "btnTapped")
         }
     }
     
     static func muteBackgroundSound() {
         if audioPlayer.backgroundPlayer.isPlaying {
-           // audioPlayer.backgroundPlayer.pause()
+            audioPlayer.backgroundPlayer.pause()
         }
     }
     
     static func unmuteBackgroundSound() {
-        //audioPlayer.backgroundPlayer.play()
+        audioPlayer.backgroundPlayer.play()
     }
 }
 

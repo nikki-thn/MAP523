@@ -19,11 +19,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Htg-VX-aoV" customClass="SetButtons" customModule="Komac" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="308.5" width="200" height="50"/>
+                                <rect key="frame" x="72.5" y="308.5" width="230" height="50"/>
                                 <color key="backgroundColor" red="0.99991244079999997" green="0.80611765536489355" blue="0.28058827672575376" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3cU-Xe-xQ2"/>
-                                    <constraint firstAttribute="width" constant="200" id="R5B-Fn-6m8"/>
+                                    <constraint firstAttribute="width" constant="230" id="R5B-Fn-6m8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <state key="normal" title="Play">
@@ -36,10 +36,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Rz-QD-5Lp" customClass="SetButtons" customModule="Komac" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="388.5" width="200" height="50"/>
+                                <rect key="frame" x="72.5" y="388.5" width="230" height="50"/>
                                 <color key="backgroundColor" red="0.99991244079999997" green="0.80611765540000002" blue="0.28058827670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="2Sq-H5-9jk"/>
+                                    <constraint firstAttribute="width" constant="230" id="2Sq-H5-9jk"/>
                                     <constraint firstAttribute="height" constant="50" id="8Lk-tZ-Coy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
@@ -49,6 +49,7 @@
                                 </state>
                                 <connections>
                                     <action selector="btnTapped:" destination="ayF-Bv-F2p" eventType="touchUpInside" id="JQR-NO-bkX"/>
+                                    <segue destination="kKP-vd-RAF" kind="show" id="Dvb-Cz-Tsb"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KOMAC" translatesAutoresizingMaskIntoConstraints="NO" id="sMD-Py-bnQ">
@@ -59,14 +60,14 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nD-CD-9z7" customClass="SetButtons" customModule="Komac" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="468.5" width="200" height="50"/>
+                                <rect key="frame" x="72.5" y="468.5" width="230" height="50"/>
                                 <color key="backgroundColor" red="0.99991244079999997" green="0.80611765540000002" blue="0.28058827670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0fh-6q-9pP"/>
-                                    <constraint firstAttribute="width" constant="200" id="MyU-0H-NIy"/>
+                                    <constraint firstAttribute="width" constant="230" id="MyU-0H-NIy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <state key="normal" title="About">
+                                <state key="normal" title="Leaderboard">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="0.99991244079999997" green="0.71291118210000004" blue="0.1077182035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -95,6 +96,117 @@
             </objects>
             <point key="canvasLocation" x="-796" y="134"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="JNJ-Qy-xBx">
+            <objects>
+                <viewController id="kKP-vd-RAF" customClass="SettingsViewController" customModule="Komac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="acF-Ei-BL6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmd-2Z-2yJ" customClass="SetButtons" customModule="Komac" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="499" width="200" height="50"/>
+                                <color key="backgroundColor" red="0.99991244079999997" green="0.80611765540000002" blue="0.28058827670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="CG4-Rr-s2j"/>
+                                    <constraint firstAttribute="width" constant="200" id="MPx-9w-NWv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="drh-GC-fUE"/>
+                                    <constraint firstAttribute="height" constant="50" id="sj9-V4-a4S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.99991244079999997" green="0.71291118210000004" blue="0.1077182035" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnTapped:" destination="ayF-Bv-F2p" eventType="touchUpInside" id="gW0-FF-uwX"/>
+                                    <segue destination="ayF-Bv-F2p" kind="show" id="L5y-EO-ZWg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Sound" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJU-iK-rRj">
+                                <rect key="frame" x="35" y="261" width="200" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="BfN-if-cv5"/>
+                                    <constraint firstAttribute="height" constant="35" id="V1z-OV-S2C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="0.99963909387588501" green="1" blue="0.99975615739822388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sound Effect " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-Yi-b77">
+                                <rect key="frame" x="35" y="316" width="200" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="cTs-3a-pdk"/>
+                                    <constraint firstAttribute="width" constant="200" id="i9b-nY-81E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" red="0.99963909387588501" green="1" blue="0.99975615739822388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SETTINGS" translatesAutoresizingMaskIntoConstraints="NO" id="6SO-8B-KJo">
+                                <rect key="frame" x="87.5" y="55" width="200" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="q1R-Bg-INc"/>
+                                    <constraint firstAttribute="height" constant="70" id="xgk-Qa-ZgH"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0o-sF-DIc" customClass="SetButtons" customModule="Komac" customModuleProvider="target">
+                                <rect key="frame" x="285" y="261" width="60" height="35"/>
+                                <color key="backgroundColor" red="0.99991244079999997" green="0.80611765540000002" blue="0.28058827670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Pll-jP-hLa"/>
+                                    <constraint firstAttribute="width" constant="60" id="vul-VH-AZl"/>
+                                </constraints>
+                                <state key="normal" title="Unmute">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="bgBtnTouched:" destination="kKP-vd-RAF" eventType="touchUpInside" id="5WT-B6-Fpa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkC-f8-BuT" customClass="SetButtons" customModule="Komac" customModuleProvider="target">
+                                <rect key="frame" x="285" y="316" width="60" height="35"/>
+                                <color key="backgroundColor" red="0.99991244079999997" green="0.80611765540000002" blue="0.28058827670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Tzy-EF-Abb"/>
+                                    <constraint firstAttribute="width" constant="60" id="dDh-qC-g3X"/>
+                                </constraints>
+                                <state key="normal" title="Mute">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="effectsBtn:" destination="kKP-vd-RAF" eventType="touchUpInside" id="6Qq-RB-P12"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61426866049999995" green="0.82382827999999997" blue="0.99991244079999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fR1-Yi-b77" firstAttribute="top" secondItem="eJU-iK-rRj" secondAttribute="bottom" constant="20" id="2wv-sX-Ui4"/>
+                            <constraint firstItem="eJU-iK-rRj" firstAttribute="leading" secondItem="rZu-Jg-mCe" secondAttribute="leading" constant="35" id="5br-nQ-6PH"/>
+                            <constraint firstItem="vmd-2Z-2yJ" firstAttribute="centerX" secondItem="acF-Ei-BL6" secondAttribute="centerX" id="Ctu-wQ-lth"/>
+                            <constraint firstItem="rZu-Jg-mCe" firstAttribute="bottom" secondItem="vmd-2Z-2yJ" secondAttribute="bottom" constant="118" id="HQk-Ro-4EV"/>
+                            <constraint firstItem="fR1-Yi-b77" firstAttribute="centerY" secondItem="acF-Ei-BL6" secondAttribute="centerY" id="RWd-hq-srf"/>
+                            <constraint firstItem="6SO-8B-KJo" firstAttribute="leading" secondItem="eJU-iK-rRj" secondAttribute="trailing" constant="-147.5" id="SSB-b1-m8w"/>
+                            <constraint firstItem="V0o-sF-DIc" firstAttribute="leading" secondItem="eJU-iK-rRj" secondAttribute="trailing" constant="50" id="UEb-T9-j8Z"/>
+                            <constraint firstItem="fR1-Yi-b77" firstAttribute="leading" secondItem="rZu-Jg-mCe" secondAttribute="leading" constant="35" id="V4i-ch-Gr4"/>
+                            <constraint firstItem="qkC-f8-BuT" firstAttribute="leading" secondItem="fR1-Yi-b77" secondAttribute="trailing" constant="50" id="V7w-Hw-p3D"/>
+                            <constraint firstItem="rZu-Jg-mCe" firstAttribute="trailing" secondItem="vmd-2Z-2yJ" secondAttribute="trailing" constant="87.5" id="VXo-iN-7Sq"/>
+                            <constraint firstItem="6SO-8B-KJo" firstAttribute="centerX" secondItem="acF-Ei-BL6" secondAttribute="centerX" id="Ww0-zQ-GwF"/>
+                            <constraint firstItem="V0o-sF-DIc" firstAttribute="top" secondItem="eJU-iK-rRj" secondAttribute="top" id="duZ-hg-diY"/>
+                            <constraint firstItem="6SO-8B-KJo" firstAttribute="top" secondItem="rZu-Jg-mCe" secondAttribute="top" constant="35" id="ej6-mX-AQN"/>
+                            <constraint firstItem="qkC-f8-BuT" firstAttribute="top" secondItem="V0o-sF-DIc" secondAttribute="bottom" constant="20" id="usQ-nl-mec"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rZu-Jg-mCe"/>
+                    </view>
+                    <connections>
+                        <outlet property="bgBtn" destination="V0o-sF-DIc" id="DRs-Fj-l8b"/>
+                        <outlet property="effBtn" destination="qkC-f8-BuT" id="9Q6-3g-rhq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39I-zs-JxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="344.80000000000001" y="133.5832083958021"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -102,15 +214,39 @@
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBj-Ua-5h0">
+                                <rect key="frame" x="310" y="40" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ecw-Kc-cL7"/>
+                                    <constraint firstAttribute="width" constant="35" id="Eut-0f-g7f"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="close"/>
+                                <connections>
+                                    <action selector="closeBtnTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="FNq-0h-Fnl"/>
+                                    <segue destination="ayF-Bv-F2p" kind="show" id="Y1w-Z2-5Rd"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="iBj-Ua-5h0" secondAttribute="trailing" constant="30" id="F3N-oQ-XSy"/>
+                            <constraint firstItem="iBj-Ua-5h0" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="20" id="tuD-gK-i17"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="254" y="-600"/>
         </scene>
     </scenes>
     <resources>
         <image name="KOMAC" width="386" height="120"/>
+        <image name="SETTINGS" width="215" height="60"/>
+        <image name="close" width="384" height="384"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y1w-Z2-5Rd"/>
+    </inferredMetricsTieBreakers>
 </document>
