@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="HearRateRecorder" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="left" textAlignment="center" id="VnG-ds-3gK">
+                            <color key="textColor" name="selectedTextBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </label>
+                        <button width="1" alignment="left" title="Record" id="Ddp-TM-nfh">
+                            <connections>
+                                <action selector="recordBtn" destination="AgC-eL-Hgc" id="TOK-xB-FMR"/>
+                            </connections>
+                        </button>
+                        <group width="1" height="100" alignment="left" id="Ept-bj-JME">
+                            <items>
+                                <button width="1" height="100" alignment="left" hidden="YES" title="History" id="VVm-kX-lxc">
+                                    <connections>
+                                        <segue destination="XKa-7O-C0l" kind="push" id="fJt-PU-mKq"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <gestureRecognizers>
+                                <longPressGestureRecognizer id="877-7h-JZo">
+                                    <connections>
+                                        <action selector="longPressGesture:" destination="AgC-eL-Hgc" id="Wfq-P1-107"/>
+                                    </connections>
+                                </longPressGestureRecognizer>
+                            </gestureRecognizers>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="historyBtn" destination="VVm-kX-lxc" id="u4s-Ew-yAl"/>
+                        <outlet property="label" destination="VnG-ds-3gK" id="UwV-Yo-v30"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="18" y="-7"/>
+        </scene>
+        <!--Session Table View Controller-->
+        <scene sceneID="uab-Hi-DgQ">
+            <objects>
+                <controller id="XKa-7O-C0l" customClass="SessionTableViewController" customModule="HearRateRecorder_Extension">
+                    <items>
+                        <button width="1" alignment="left" hidden="YES" title="Clear All" id="gXu-6n-44x">
+                            <connections>
+                                <action selector="clearAllSessions" destination="XKa-7O-C0l" id="MbQ-LC-xv5"/>
+                            </connections>
+                        </button>
+                        <table alignment="left" id="ooS-jx-ZR9">
+                            <items>
+                                <tableRow identifier="SessionRowController" id="GMf-ow-5DC" userLabel="Session Row Controller" customClass="SessionRowController" customModule="HearRateRecorder_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="lLR-q2-pbb">
+                                        <items>
+                                            <label width="45" height="38" alignment="left" text="Max:" textAlignment="center" id="wTJ-v0-DPq"/>
+                                            <label width="45" height="1" alignment="left" text="Min:" textAlignment="center" id="JEv-yQ-DYR"/>
+                                            <label width="45" height="1" alignment="left" text="Avg:" textAlignment="center" id="n2R-LW-k2Q"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="avgLabel" destination="n2R-LW-k2Q" id="MCM-0e-9UG"/>
+                                        <outlet property="maxLabel" destination="wTJ-v0-DPq" id="UQV-qh-srk"/>
+                                        <outlet property="minLabel" destination="JEv-yQ-DYR" id="Jay-58-4MU"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                            <gestureRecognizers>
+                                <longPressGestureRecognizer id="wVo-f7-PEF">
+                                    <connections>
+                                        <action selector="longGesture:" destination="XKa-7O-C0l" id="tnS-nV-Cun"/>
+                                    </connections>
+                                </longPressGestureRecognizer>
+                            </gestureRecognizers>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="clearAllBtn" destination="gXu-6n-44x" id="rdX-4G-6n7"/>
+                        <outlet property="sessionTable" destination="ooS-jx-ZR9" id="lA6-HA-Rik"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="322" y="-7"/>
+        </scene>
+    </scenes>
+</document>

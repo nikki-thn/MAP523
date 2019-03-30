@@ -1,0 +1,659 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1176045224E6D00004D4C1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1176044224E6D00004D4C1D /* AppDelegate.swift */; };
+		A1176047224E6D00004D4C1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1176046224E6D00004D4C1D /* ViewController.swift */; };
+		A117604A224E6D01004D4C1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1176048224E6D01004D4C1D /* Main.storyboard */; };
+		A117604F224E6D01004D4C1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A117604E224E6D01004D4C1D /* Assets.xcassets */; };
+		A1176052224E6D01004D4C1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1176050224E6D01004D4C1D /* LaunchScreen.storyboard */; };
+		A11760A2224E788E004D4C1D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11760A0224E788E004D4C1D /* Interface.storyboard */; };
+		A11760A4224E788F004D4C1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11760A3224E788F004D4C1D /* Assets.xcassets */; };
+		A11760AB224E788F004D4C1D /* HearRateRecorder Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A11760AA224E788F004D4C1D /* HearRateRecorder Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A11760B0224E788F004D4C1D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11760AF224E788F004D4C1D /* InterfaceController.swift */; };
+		A11760B2224E788F004D4C1D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11760B1224E788F004D4C1D /* ExtensionDelegate.swift */; };
+		A11760B4224E788F004D4C1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A11760B3224E788F004D4C1D /* Assets.xcassets */; };
+		A11760B8224E788F004D4C1D /* HearRateRecorder.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A117609E224E788E004D4C1D /* HearRateRecorder.app */; };
+		A11760C5224E7B05004D4C1D /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11760C3224E7AFF004D4C1D /* Session.swift */; };
+		A11760C7224E7C13004D4C1D /* SessionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11760C6224E7C13004D4C1D /* SessionTableViewController.swift */; };
+		A1A1E63B224FB179002D9EE9 /* session.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E63A224FB179002D9EE9 /* session.txt */; };
+		A1A1E63D224FB659002D9EE9 /* session.txt in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E63C224FB659002D9EE9 /* session.txt */; };
+		A1C852F0224FD3D100B4A551 /* SessionRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C852EF224FD3D100B4A551 /* SessionRowController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A11760AC224E788F004D4C1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1176039224E6D00004D4C1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A11760A9224E788F004D4C1D;
+			remoteInfo = "HearRateRecorder Extension";
+		};
+		A11760B6224E788F004D4C1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1176039224E6D00004D4C1D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A117609D224E788E004D4C1D;
+			remoteInfo = HearRateRecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A11760BE224E788F004D4C1D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A11760AB224E788F004D4C1D /* HearRateRecorder Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11760C0224E788F004D4C1D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A11760B8224E788F004D4C1D /* HearRateRecorder.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A1176041224E6D00004D4C1D /* Lab9_10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab9_10.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1176044224E6D00004D4C1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1176046224E6D00004D4C1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A1176049224E6D01004D4C1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A117604E224E6D01004D4C1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1176051224E6D01004D4C1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A1176053224E6D01004D4C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A117609E224E788E004D4C1D /* HearRateRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HearRateRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11760A1224E788E004D4C1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A11760A3224E788F004D4C1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A11760A5224E788F004D4C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A11760AA224E788F004D4C1D /* HearRateRecorder Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HearRateRecorder Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11760AF224E788F004D4C1D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		A11760B1224E788F004D4C1D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		A11760B3224E788F004D4C1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A11760B5224E788F004D4C1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A11760C2224E78E6004D4C1D /* HeartRateRecorder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HeartRateRecorder.xcdatamodel; sourceTree = "<group>"; };
+		A11760C3224E7AFF004D4C1D /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A11760C6224E7C13004D4C1D /* SessionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionTableViewController.swift; sourceTree = "<group>"; };
+		A1A1E63A224FB179002D9EE9 /* session.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = session.txt; sourceTree = "<group>"; };
+		A1A1E63C224FB659002D9EE9 /* session.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = session.txt; sourceTree = "<group>"; };
+		A1C852EF224FD3D100B4A551 /* SessionRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A117603E224E6D00004D4C1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11760A7224E788F004D4C1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1176038224E6D00004D4C1D = {
+			isa = PBXGroup;
+			children = (
+				A1A1E639224FB158002D9EE9 /* File */,
+				A1176043224E6D00004D4C1D /* Lab9_10 */,
+				A117609F224E788E004D4C1D /* HearRateRecorder */,
+				A11760AE224E788F004D4C1D /* HearRateRecorder Extension */,
+				A1176042224E6D00004D4C1D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1176042224E6D00004D4C1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1176041224E6D00004D4C1D /* Lab9_10.app */,
+				A117609E224E788E004D4C1D /* HearRateRecorder.app */,
+				A11760AA224E788F004D4C1D /* HearRateRecorder Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1176043224E6D00004D4C1D /* Lab9_10 */ = {
+			isa = PBXGroup;
+			children = (
+				A1176044224E6D00004D4C1D /* AppDelegate.swift */,
+				A1176046224E6D00004D4C1D /* ViewController.swift */,
+				A1176048224E6D01004D4C1D /* Main.storyboard */,
+				A1A1E63A224FB179002D9EE9 /* session.txt */,
+				A117604E224E6D01004D4C1D /* Assets.xcassets */,
+				A1176050224E6D01004D4C1D /* LaunchScreen.storyboard */,
+				A1176053224E6D01004D4C1D /* Info.plist */,
+			);
+			path = Lab9_10;
+			sourceTree = "<group>";
+		};
+		A117609F224E788E004D4C1D /* HearRateRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				A11760A0224E788E004D4C1D /* Interface.storyboard */,
+				A11760A3224E788F004D4C1D /* Assets.xcassets */,
+				A11760A5224E788F004D4C1D /* Info.plist */,
+				A11760C1224E78E6004D4C1D /* HeartRateRecorder.xcdatamodeld */,
+			);
+			path = HearRateRecorder;
+			sourceTree = "<group>";
+		};
+		A11760AE224E788F004D4C1D /* HearRateRecorder Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A11760C3224E7AFF004D4C1D /* Session.swift */,
+				A11760AF224E788F004D4C1D /* InterfaceController.swift */,
+				A11760C6224E7C13004D4C1D /* SessionTableViewController.swift */,
+				A1C852EF224FD3D100B4A551 /* SessionRowController.swift */,
+				A11760B1224E788F004D4C1D /* ExtensionDelegate.swift */,
+				A11760B3224E788F004D4C1D /* Assets.xcassets */,
+				A11760B5224E788F004D4C1D /* Info.plist */,
+			);
+			path = "HearRateRecorder Extension";
+			sourceTree = "<group>";
+		};
+		A1A1E639224FB158002D9EE9 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				A1A1E63C224FB659002D9EE9 /* session.txt */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1176040224E6D00004D4C1D /* Lab9_10 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1176056224E6D01004D4C1D /* Build configuration list for PBXNativeTarget "Lab9_10" */;
+			buildPhases = (
+				A117603D224E6D00004D4C1D /* Sources */,
+				A117603E224E6D00004D4C1D /* Frameworks */,
+				A117603F224E6D00004D4C1D /* Resources */,
+				A11760C0224E788F004D4C1D /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A11760B7224E788F004D4C1D /* PBXTargetDependency */,
+			);
+			name = Lab9_10;
+			productName = Lab9_10;
+			productReference = A1176041224E6D00004D4C1D /* Lab9_10.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A117609D224E788E004D4C1D /* HearRateRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A11760BF224E788F004D4C1D /* Build configuration list for PBXNativeTarget "HearRateRecorder" */;
+			buildPhases = (
+				A117609C224E788E004D4C1D /* Resources */,
+				A11760BE224E788F004D4C1D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A11760AD224E788F004D4C1D /* PBXTargetDependency */,
+			);
+			name = HearRateRecorder;
+			productName = HearRateRecorder;
+			productReference = A117609E224E788E004D4C1D /* HearRateRecorder.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A11760A9224E788F004D4C1D /* HearRateRecorder Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A11760BD224E788F004D4C1D /* Build configuration list for PBXNativeTarget "HearRateRecorder Extension" */;
+			buildPhases = (
+				A11760A6224E788F004D4C1D /* Sources */,
+				A11760A7224E788F004D4C1D /* Frameworks */,
+				A11760A8224E788F004D4C1D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HearRateRecorder Extension";
+			productName = "HearRateRecorder Extension";
+			productReference = A11760AA224E788F004D4C1D /* HearRateRecorder Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1176039224E6D00004D4C1D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = PenguinExpress;
+				TargetAttributes = {
+					A1176040224E6D00004D4C1D = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					A117609D224E788E004D4C1D = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					A11760A9224E788F004D4C1D = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = A117603C224E6D00004D4C1D /* Build configuration list for PBXProject "Lab9_10" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1176038224E6D00004D4C1D;
+			productRefGroup = A1176042224E6D00004D4C1D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1176040224E6D00004D4C1D /* Lab9_10 */,
+				A117609D224E788E004D4C1D /* HearRateRecorder */,
+				A11760A9224E788F004D4C1D /* HearRateRecorder Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A117603F224E6D00004D4C1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1176052224E6D01004D4C1D /* LaunchScreen.storyboard in Resources */,
+				A1A1E63B224FB179002D9EE9 /* session.txt in Resources */,
+				A117604F224E6D01004D4C1D /* Assets.xcassets in Resources */,
+				A1A1E63D224FB659002D9EE9 /* session.txt in Resources */,
+				A117604A224E6D01004D4C1D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A117609C224E788E004D4C1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11760A4224E788F004D4C1D /* Assets.xcassets in Resources */,
+				A11760A2224E788E004D4C1D /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11760A8224E788F004D4C1D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11760B4224E788F004D4C1D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A117603D224E6D00004D4C1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1176047224E6D00004D4C1D /* ViewController.swift in Sources */,
+				A1176045224E6D00004D4C1D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11760A6224E788F004D4C1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11760C7224E7C13004D4C1D /* SessionTableViewController.swift in Sources */,
+				A11760B2224E788F004D4C1D /* ExtensionDelegate.swift in Sources */,
+				A11760C5224E7B05004D4C1D /* Session.swift in Sources */,
+				A11760B0224E788F004D4C1D /* InterfaceController.swift in Sources */,
+				A1C852F0224FD3D100B4A551 /* SessionRowController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A11760AD224E788F004D4C1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A11760A9224E788F004D4C1D /* HearRateRecorder Extension */;
+			targetProxy = A11760AC224E788F004D4C1D /* PBXContainerItemProxy */;
+		};
+		A11760B7224E788F004D4C1D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A117609D224E788E004D4C1D /* HearRateRecorder */;
+			targetProxy = A11760B6224E788F004D4C1D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A1176048224E6D01004D4C1D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1176049224E6D01004D4C1D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A1176050224E6D01004D4C1D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A1176051224E6D01004D4C1D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A11760A0224E788E004D4C1D /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A11760A1224E788E004D4C1D /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A1176054224E6D01004D4C1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1176055224E6D01004D4C1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1176057224E6D01004D4C1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Lab9_10/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PenguinExpress.Lab9-10";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1176058224E6D01004D4C1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Lab9_10/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PenguinExpress.Lab9-10";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A11760B9224E788F004D4C1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = HearRateRecorder_Extension;
+				INFOPLIST_FILE = HearRateRecorder/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "PenguinExpress.Lab9-10.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		A11760BA224E788F004D4C1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				IBSC_MODULE = HearRateRecorder_Extension;
+				INFOPLIST_FILE = HearRateRecorder/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "PenguinExpress.Lab9-10.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+		A11760BB224E788F004D4C1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "HearRateRecorder Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PenguinExpress.Lab9-10.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Debug;
+		};
+		A11760BC224E788F004D4C1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "HearRateRecorder Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "PenguinExpress.Lab9-10.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A117603C224E6D00004D4C1D /* Build configuration list for PBXProject "Lab9_10" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1176054224E6D01004D4C1D /* Debug */,
+				A1176055224E6D01004D4C1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1176056224E6D01004D4C1D /* Build configuration list for PBXNativeTarget "Lab9_10" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1176057224E6D01004D4C1D /* Debug */,
+				A1176058224E6D01004D4C1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A11760BD224E788F004D4C1D /* Build configuration list for PBXNativeTarget "HearRateRecorder Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A11760BB224E788F004D4C1D /* Debug */,
+				A11760BC224E788F004D4C1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A11760BF224E788F004D4C1D /* Build configuration list for PBXNativeTarget "HearRateRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A11760B9224E788F004D4C1D /* Debug */,
+				A11760BA224E788F004D4C1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A11760C1224E78E6004D4C1D /* HeartRateRecorder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A11760C2224E78E6004D4C1D /* HeartRateRecorder.xcdatamodel */,
+			);
+			currentVersion = A11760C2224E78E6004D4C1D /* HeartRateRecorder.xcdatamodel */;
+			path = HeartRateRecorder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A1176039224E6D00004D4C1D /* Project object */;
+}
